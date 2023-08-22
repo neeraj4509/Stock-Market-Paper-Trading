@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>Portfolio</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/sticky-footer-navbar.css"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/portfolio.css">
+</head>
+<style>
+
+</style>
+
+<body>
+
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="nav-bar">
+      <div class="container">
+        <input type="checkbox" id="drop-down-cbox" />
+        <label for="drop-down-cbox">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <h1 class="site-logo">StockEye</h1>
+
+        <ul class="main-nav small-caps">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="report.html">P&L Report</a></li>
+          <li><a href="">Contact</a>
+          </li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+
+
+      </div>
+    </nav>
+  </header>
+
+  <!-- Begin page content -->
+  <div class="container mt-5">
+    <div class="plreport">
+
+    </div>
+    <div class="waviy">
+      <span style="--i:1">H</span>
+      <span style="--i:2">O</span>
+      <span style="--i:3">L</span>
+      <span style="--i:4">D</span>
+      <span style="--i:5">I</span>
+      <span style="--i:6">N</span>
+      <span style="--i:7">G</span>
+      <span style="--i:8">S</span>
+
+
+    </div>
+
+    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+  </div>
+  </div>
+  <div id="table-portfolio" class="d-flex justify-content-center row">
+    <div class="col-md-10">
+      <div class="rounded">
+        <div class="table-responsive table-borderless">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center">S. No.</th>
+                <th>Company Name</th>
+                <th>Qty</th>
+                <th>Buy Price</th>
+                <th>Cur. Value</th>
+                <th>P&L</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            {% if holding == []: %}
+            <h2 class="no">No Holdings
+              Buy Some Shares.</h2>
+            {% endif %}
+            <tbody class="table-body">
+              {%for i in holding%}
+              <tr class="cell-1" data-toggle="collapse" data-target="#demo">
+                <td class="text-center"></td>
+
+                <td>{{i.company_name}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.buy_price}}</td>
+                <td>{{yf.Ticker(str(i.Symbol) +".NS").info["regularMarketPrice"]}}</td>
+                <td>{{round((yf.Ticker(str(i.Symbol) +".NS").info["regularMarketPrice"] - i.buy_price)* i.quantity) }}
+                </td>
+                <td><a class="btn btn-outline-danger" href="{{ url_for('sell', sno=i.sno) }}" role="button">Sell</a>
+                </td>
+                <td class="table-elipse" data-toggle="collapse" data-target="#demo"><i
+                    class="fa fa-ellipsis-h text-black-50"></i></td>
+              </tr>
+              {%endfor%}
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

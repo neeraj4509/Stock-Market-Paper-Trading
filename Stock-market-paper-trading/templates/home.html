@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>StockEye</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/home.css">
+</head>
+
+<body>
+
+  <nav class="nav-bar">
+    <div class="container">
+      <input type="checkbox" id="drop-down-cbox" />
+      <label for="drop-down-cbox">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <h1 class="site-logo">StockEye</h1>
+
+      <ul class="main-nav small-caps">
+        <li><a href="#">Home</a></li>
+        <li><a href="Portfolio.html">Portfolio</a></li>
+        <li><a href="report.html">P&L Report</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+
+  <div id="header">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    <p class="alert alert-warning flash" role="alert"><strong>{{ messages[0] }}</strong></p>
+    {% endif %}
+    {% endwith %}
+    <div class="waviy">
+      <span style="--i:1">W</span>
+      <span style="--i:2">E</span>
+      <span style="--i:3">L</span>
+      <span style="--i:4">C</span>
+      <span style="--i:5">O</span>
+      <span style="--i:6">M</span>
+      <span style="--i:7">E</span>
+      <span style="--i:8"> </span>
+      {% for i in name %}
+      <span style="--i:{{9+name.index(i)}}">{{i}}</span>
+      {%endfor%}
+
+
+
+    </div>
+    <div class="centered">
+      <form autocomplete="off" class="form-inline my-2 my-lg-0" action="/stocksdata" method="POST">
+        <input type="text" name="Stock_name" style="text-transform:uppercase" autocomplete="off"
+          placeholder="Enter the stock name">
+        <button type="submit"><i class="fas fa-search">Search</i></button>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+  </script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="../../assets/js/vendor/popper.min.js"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

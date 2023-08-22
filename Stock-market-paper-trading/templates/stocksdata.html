@@ -1,0 +1,90 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price </title>
+    <link rel="stylesheet" href="/static/index.css">
+
+</head>
+
+<body>
+    <section id="contactMe">
+        <div class="contact-container">
+            <div class="container ">
+
+                <table cellspacing="20" class="table1">
+                    <tr>
+                        <th>
+
+                            <h1>{{company_name}}</h1>
+                            <h1>{{market_price}} ({{change_in_price}})</h1>
+                            <table cellspacing="15" class="table2">
+                                <tr><br>
+                                    <th>Open Price </th>
+                                    <th>Today’s High </th>
+                                    <th>Today’s Low </th>
+                                </tr>
+                                <tr>
+                                    <th>{{open}}</th>
+                                    <th>{{high}}</th>
+                                    <th>{{low}}</th>
+                                </tr>
+                            </table><br>
+                        </th>
+                        <th>
+                            <h1>Key Information</h1>
+                            <table cellspacing="15" class="table2">
+                                <tr>
+                                    <th>Market Cap (Rs):</th>
+                                    <th>{{debt}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Cashpershare(Rs):</th>
+                                    <th>{{cashpershare}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Div (Rs):</th>
+                                    <th>{{dividend}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Gross Profit (Rs):</th>
+                                    <th>{{gross_profit}}</th>
+                                </tr>
+                                <tr>
+                                    <th>Recommendation:</th>
+                                    <th>{{recomm}}</th>
+                                </tr>
+                            </table>
+                        </th>
+                    </tr>
+                </table>
+                <form action="/thanks" autocomplete="off" method="POST">
+                    <div class="form-row">
+                        <div class="inputBox">
+                            <input type="text" name="buy_price" autocomplete="off" required />
+                            <div class="underline"></div>
+                            <label class="text">Enter The Price</label>
+                        </div>
+                        <div class="inputBox">
+                            <input type="text" name="quantity" autocomplete="off" required />
+                            <div class="underline"></div>
+                            <label class="text">Quantity</label>
+                        </div>
+                    </div>
+                    <div class="form-row submit-btn">
+                        <div class="inputBox">
+                            <div class="inner">
+                                <input type="submit" value="Buy" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
